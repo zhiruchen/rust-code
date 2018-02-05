@@ -46,5 +46,65 @@ fn main() {
     println!("tuple 1: {}", z.1);
 
     // 函数类型
+ 
+    // if
+    let anum = 5;
+    if anum == 5 {
+        println!("{}", anum)
+    } else if anum == 6 {
+        println!("anum is six!");
+    } else {
+        println!("{}", anum+1111)
+    }
 
+    let bnum = if anum == 5 {
+        10
+    } else {
+        15
+    };
+    println!("bnum: {}", bnum);
+
+    let cnum = if anum == 5 { 10 } else { 15 };
+    println!("cnun: {}", cnum);
+
+    loop {
+        println!("loop!");
+        break;
+    }
+
+    let mut done = false;
+    while !done {
+        println!("while loop");
+        done = true
+    }
+
+    //for loop
+    for i in 1..10 {
+        println!("i: {}", i) // 1-9
+    }
+
+    for (index, value) in (5..10).enumerate() {
+        println!("index = {}, value = {}", index, value);
+    }
+
+    for (linenum, line) in "hello\nworld".lines().enumerate() {
+        println!("{}: {}", linenum, line);
+    }
+
+    let mut val = 5;
+    loop {
+        val += val - 3;
+        println!("{}", val);
+
+        if val % 5 == 0 { break; }
+    }
+
+    // loop label
+    'outer: for v in 0..10 {
+        'inner: for vv in 0..10 {
+            if v % 2 == 0 { continue 'outer; }
+            if vv % 2 == 0 { continue 'inner; }
+            println!("v: {}, vv: {}", v, vv);
+        }
+    }
 }
