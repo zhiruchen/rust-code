@@ -107,4 +107,41 @@ fn main() {
             println!("v: {}, vv: {}", v, vv);
         }
     }
+
+    // vector 动态可增长的数组
+    let vec = vec![1,2,3,4,5];
+    println!("vec: {:?}", vec);    
+    println!("第3个元素值: {}", vec[2]);
+
+    // 可以多次遍历vec的引用
+    for i in &vec {
+        println!("take ownership of the vector and its element {}", i);
+    }
+    for i in &vec {
+        println!("take ownership of the vector and its element {}", i);
+    }
+
+    // 处理越界
+    match vec.get(5) {
+        Some(x) => println!("第7个元素: {}", x),
+        None => println!("访问越界!")
+    }
+
+    let mut vec1 = vec![0; 10];
+    println!("vec1: {:?}", vec1);
+
+    // 遍历vec
+    let mut vec2 = vec![1,1,1,1,4,5,5,6,7];
+    for i in &vec {
+        println!("a reference to {}", i);
+    }
+
+    for i in &mut vec2 {
+        println!("a mutable reference to {}", i);
+    }
+
+    for i in vec2 {
+        println!("take ownership of the vector and its element {}", i);
+    }
+
 }
