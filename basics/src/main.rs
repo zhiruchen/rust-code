@@ -144,4 +144,40 @@ fn main() {
         println!("take ownership of the vector and its element {}", i);
     }
 
+    // 所有权
+
+    let myv = vec![0,1,2];
+    let myv1 = myv;
+    // println!("myv is : {:?}", myv); // move occurs because `myv` has type `std::vec::Vec<i32>`, which does not implement the `Copy` trait
+    // 基本类型实现了copy trait
+    let val1 = 1;
+    let val2 = val1;
+    println!("val1 is: {}", val1);
+
+    //借用所有权
+    fn sum_vec(v: &Vec<i32>) -> i32 {
+        return v.iter().fold(0, |a, &b| a+b);
+    }
+
+    // 通过引用借用所有权
+    fn foo(v1: &Vec<i32>, v2: &Vec<i32>) -> i32 {
+        let s1 = sum_vec(v1);
+        let s2 = sum_vec(v2);
+
+        s1 + s2
+    }
+
+    let vec_v1 = vec![1,2,23];
+    let vec_v2 = vec![100,123,0];
+    let answer = foo(&vec_v1, &vec_v2);
+    println!("answer: {}", answer);
+
+    // 可变引用
+    let mut val_x = 5;
+    {
+        let val_y = &mut val_x; // 可变引用，允许改变借用的资源
+        *val_y += 1;
+    }
+
+    println!("{}", val_x);
 }
