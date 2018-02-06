@@ -1,3 +1,6 @@
+use std::cell::Cell;
+
+
 fn main() {
     let x = true;
     let y: bool = false;
@@ -180,4 +183,25 @@ fn main() {
     }
 
     println!("{}", val_x);
+
+    // 可变性
+    
+    // 结构体的可变性位于绑定上
+    struct Point {
+        x: i32,
+        y: i32,
+    }
+    let mut p = Point { x: 5, y: 6 }; // 绑定可变则字段可变
+    p.x = 10;
+
+    let p1 = Point { x: 5, y: 6 };
+    // p1.x = 10; // can not
+
+    struct Shape<'a> {
+        rep:  Cell<&'a str>,
+        kind: &'a str,
+    }
+    let sp = Shape { kind: "point", rep: Cell::new("x,y")};
+    sp.rep.set("{x,y}");
+    println!("rep: {:?}", sp.rep);
 }
