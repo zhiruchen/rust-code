@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 fn main() {
     let mut v = Vec::new();
 
@@ -56,6 +58,9 @@ fn enum_vec(){
 
     // 字符串
     op_string();
+
+    // hash map
+    hash_map();
 }
 
 fn op_string() {
@@ -88,4 +93,38 @@ fn op_string() {
     // 连接字符串
     let str_data4 = format!("{}-{}-{}", "tic".to_string(), "tao".to_string(), "toc".to_string());
     println!("{}", str_data4);
+}
+
+fn hash_map() {
+    let mut scores = HashMap::new();
+
+    let team_name1 = String::from("Blue");
+    let team_name2 = String::from("Yellow");
+    scores.insert(team_name1, 10);
+    scores.insert(team_name2, 15);
+
+    for (k, v) in &scores {
+        println!("{}: {}", k, v);
+    }
+
+    let bule_key = "Blue".to_string();
+
+    let score = scores.get(&bule_key);
+    println!("score: {:?}", score);
+
+    let teams = vec![String::from("Blue"), String::from("Yellow")];
+    let init_scores = vec![10, 50];
+
+    let scores2: HashMap<_,_> = teams.iter().zip(init_scores.iter()).collect();
+
+    println!("{:?}", scores2.get(&bule_key));
+    let text = "hello world wonderful world!";
+    let mut word_count = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = word_count.entry(word).or_insert(0);
+        *count += 1;
+    }
+
+    println!("{:?}", word_count);
 }
