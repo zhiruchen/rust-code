@@ -19,7 +19,7 @@ fn main() {
         let third_option = v.get(2);
         println!("third: {}, third_option: {:?}", third, third_option);
     }
-    
+
     for e in &v {
         println!("e: {}", e);
     }
@@ -33,14 +33,14 @@ fn main() {
     }
 
     {
-        let vv = vec![1,2,3];
-    }  // 丢弃vv
+        let vv = vec![1, 2, 3];
+    } // 丢弃vv
     println!("Hello, world!");
 
     enum_vec();
 }
 
-fn enum_vec(){
+fn enum_vec() {
     #[derive(Debug)]
     enum SpreadsheetCell {
         Int(i32),
@@ -91,7 +91,12 @@ fn op_string() {
     println!("{}", str_data3);
 
     // 连接字符串
-    let str_data4 = format!("{}-{}-{}", "tic".to_string(), "tao".to_string(), "toc".to_string());
+    let str_data4 = format!(
+        "{}-{}-{}",
+        "tic".to_string(),
+        "tao".to_string(),
+        "toc".to_string()
+    );
     println!("{}", str_data4);
 }
 
@@ -115,9 +120,9 @@ fn hash_map() {
     let teams = vec![String::from("Blue"), String::from("Yellow")];
     let init_scores = vec![10, 50];
 
-    let scores2: HashMap<_,_> = teams.iter().zip(init_scores.iter()).collect();
+    let scores2: HashMap<_, _> = teams.iter().zip(init_scores.iter()).collect();
 
-    println!("{:?}", scores2.get(&bule_key));
+    println!("scores2: {:?}", scores2.get(&bule_key));
     let text = "hello world wonderful world!";
     let mut word_count = HashMap::new();
 

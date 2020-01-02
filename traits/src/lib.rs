@@ -34,7 +34,6 @@ pub fn notify<T: Summriable>(item: T) {
     println!("summary is: {}", item.summary());
 }
 
-
 #[cfg(test)]
 mod tests {
     #[test]

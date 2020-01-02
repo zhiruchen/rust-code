@@ -10,7 +10,10 @@ struct WeatherForecast {
 
 impl Summriable for WeatherForecast {
     fn summary(&self) -> String {
-        format!("the high will be {}, and the low willl be {}", self.high_temp, self.low_temp)
+        format!(
+            "the high will be {}, and the low willl be {}",
+            self.high_temp, self.low_temp
+        )
     }
 }
 
@@ -24,7 +27,10 @@ fn main() {
 
     println!("1 new tweet: {}", tweet.summary());
 
-    let weather = WeatherForecast {high_temp:36.5, low_temp:25.0};
+    let weather = WeatherForecast {
+        high_temp: 36.5,
+        low_temp: 25.0,
+    };
     println!("weather forecast: {}", weather.summary());
 
     traits::notify(weather);
