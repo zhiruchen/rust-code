@@ -15,7 +15,7 @@ fn main() {
     let result = largest(&number_list);
     println!("the largest number is: {}", result);
 
-    // println!("the generic largest number: {}", generic_largest(&number_list));
+    println!("the generic largest number: {}", generic_largest(&number_list));
 
     let integer_p = Point {x: 5, y: 6};
     let float_p = Point {x: 5.6, y: 6.6};
@@ -36,12 +36,12 @@ fn largest(list: &[i32]) -> i32 {
     largest
 }
 
-// fn generic_largest<T>(list: &[T]) -> T {
-//     let mut largest = list[0];
-//     for &item in list.iter() {
-//         if item > largest {
-//             largest = item;
-//         }
-//     }
-//     largest
-// }
+fn generic_largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    let mut largest = list[0];
+    for &item in list.iter() {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
