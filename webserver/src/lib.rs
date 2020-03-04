@@ -1,19 +1,19 @@
 use std::thread;
 
 pub struct ThreadPool {
-    threads: Vec<thread::JoinHandle<()>>,
+    workers: Vec<Worker>,
 }
 
 impl ThreadPool {
     pub fn new(size: usize) -> ThreadPool {
         assert!(size > 0);
 
-        let mut threads = Vec::with_capacity(size);
-        for _ in 0..size {
-
+        let mut workers = Vec::with_capacity(size);
+        for id in 0..size {
+            workers.push(Worker::new(id))
         }
         ThreadPool {
-            threads
+            workers
         }
     }
 
@@ -22,5 +22,20 @@ impl ThreadPool {
            F: FnOnce() + Send + 'static
     {
 
+    }
+}
+
+struct Worker {
+    id: usize,
+    thread: thread::JoinHandle<()>,
+}
+
+impl Worker {
+    pub fn new(id: usize) Worker {
+        let thread = thread::spawn(|| {});
+        Worker {
+            id,
+            thread;
+        }
     }
 }
