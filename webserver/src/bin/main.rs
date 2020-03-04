@@ -11,7 +11,7 @@ fn main() {
     for stream in lisener.incoming(){
         let stream = stream.unwrap();
 
-        pool::execute(|| {
+        pool.execute(|| {
             handle_connection(stream);
         });
         
